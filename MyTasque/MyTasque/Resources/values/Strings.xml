@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- MainActivity Buttons-->
+	<string name="app_name">Android.Tasque</string>
+	<string name="edNewTaskHint">new task...</string>
+	<string name="btAdd">Add</string>
+	<string name="dueOn">Due on:</string>
+	<string name="save">Save</string>
+	
+	<!-- TaskEditActivity -->
+	<string name="notes">Notes:</string>
+	<string name="completed">Completed</string>
+	<string name="edNewNoteHint">new note...</string>
+	<string name="taskText">Task</string>
+	<string name="taskCompleted">Completed</string>
+	<string name="taskDueOn">Due on</string>
+	
+	<!-- ActionBar Menu -->
+	<string name="settings">Settings</string>
+	<string name="changeTaskListName">Change task list name</string>
+	<string name="about">About</string>
+	
+	<!-- Settings Screen -->
+	<string name="username">Username</string>
+	<string name="usernameSummary">Username for the backend</string>
+	<string name="usernameDialogTitle">Type your username here:</string>
+	
+	<string name="password">Password</string>
+	<string name="passwordSummary">Password for the backend</string>
+	<string name="passwordDialogTitle">Type your password here:</string>
+		
+	<string name="backendCategoryTitle">Backend Configuration</string>
+	<string name="infoCategoryTitle">Info</string>
+	<string name="tasqueInternetTitle">Tasque on the internet</string>
+	<string name="tasqueInternetSummary">Visit Tasque on the internet</string>
+	
+	<string-array name="backendKeys">
+        <item name="1">Dummy Backend</item>
+        <item name="2">RememberTheMilk Backend</item>
+        <item name="3">Google Backend</item>
+    </string-array>
+    
+    <string-array name="backendValues">
+        <item name="1">dummy</item>
+        <item name="2">rtm</item>
+        <item name="3">google</item>
+    </string-array>
+    
+    <string name="backendDefault">dummy</string>
+    <string name="backendDialogTitle">Storage Backend:</string>
+    <string name="backendTitle">Choose Storage Backend</string>
+
+	<string name="displayCategoryTitle">Display Options</string>
+	
+	<string name="orderByDefault">name</string>
+    <string name="orderByDialogTitle">Order tasks...</string>
+    <string name="orderByTitle">Choose task order</string>
+
+	<string-array name="orderByKeys">
+        <item name="1">name</item>
+        <item name="2">due date</item>
+        <item name="3">priority</item>
+    </string-array>
+    
+    <string-array name="orderByValues">
+        <item name="1">name</item>
+        <item name="2">due date</item>
+        <item name="3">priority</item>
+    </string-array>
+    
+    <!---
+    <string name="orderAscDscDefault">ascending</string>
+    <string name="orderAscDscDialogTitle">Order type:</string>
+    <string name="orderAscDscTitle">Order type</string>
+
+	<string-array name="orderAscDscKeys">
+        <item name="1">ascending</item>
+        <item name="2">descending</item>
+    </string-array>
+    
+    <string-array name="orderAscDscValues">
+        <item name="1">ascending</item>
+        <item name="2">descending</item>
+    </string-array>-->
+    
+    <string name="showCompleted">Show completed tasks</string>
+    <string name="showCompletedSummary">Show completed tasks</string>
+    
+    <string name="showDiscarded">Show discarded tasks</string>
+    <string name="showDiscardedSummary">Show discarded tasks</string>
+    
+    <string name="showActive">Show active tasks</string>
+    <string name="showActiveSummary">Show active tasks</string>
+    
+    
+
+
+</resources>

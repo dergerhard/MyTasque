@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <PreferenceCategory android:title="@string/backendCategoryTitle">
+    
+    <ListPreference
+        android:key="backend"
+        android:title="@string/backendTitle"
+        android:dialogTitle="@string/backendDialogTitle"
+        android:entries="@array/backendKeys"
+        android:entryValues="@array/backendValues"
+        android:defaultValue="@string/backendDefault" />
+    
+    <EditTextPreference android:key="username"
+                        android:title="@string/username"
+                        android:summary="@string/usernameSummary"
+                        android:dialogTitle="@string/usernameDialogTitle" />
+                        
+    <EditTextPreference android:key="password"
+                        android:title="@string/password"
+                        android:summary="@string/passwordSummary"
+                        android:dialogTitle="@string/passwordDialogTitle" />
+  </PreferenceCategory>
+  
+  
+  <PreferenceCategory android:title="@string/displayCategoryTitle">
+  	<ListPreference
+        android:key="orderBy"
+        android:title="@string/orderByTitle"
+        android:dialogTitle="@string/orderByDialogTitle"
+        android:entries="@array/orderByKeys"
+        android:entryValues="@array/orderByValues"
+        android:defaultValue="@string/orderByDefault" />
+        
+    <!---
+    <ListPreference
+        android:key="orderAscDsc"
+        android:title="@string/orderAscDscTitle"
+        android:dialogTitle="@string/orderAscDscDialogTitle"
+        android:entries="@array/orderAscDscKeys"
+        android:entryValues="@array/orderAscDscValues"
+        android:defaultValue="@string/orderAscDscDefault" /> -->
+    
+     <CheckBoxPreference
+        android:key="showCompleted"
+        android:title="@string/showCompleted"
+        android:summary="@string/showCompletedSummary"
+        android:defaultValue="true" />
+     <CheckBoxPreference
+        android:key="showDiscarded"
+        android:title="@string/showDiscarded"
+        android:summary="@string/showDiscardedSummary"
+        android:defaultValue="true" />
+     <CheckBoxPreference
+        android:key="showActive"
+        android:title="@string/showActive"
+        android:summary="@string/showActiveSummary"
+        android:defaultValue="true" />
+        
+            
+    
+        
+  </PreferenceCategory>
+  
+  <PreferenceCategory android:title="@string/infoCategoryTitle">
+  		<PreferenceScreen android:title="@string/tasqueInternetTitle"
+        	              android:summary="@string/tasqueInternetSummary">
+
+      		<intent android:action="android.intent.action.VIEW"
+            	    android:data="http://www.google.com" />
+
+    	</PreferenceScreen>
+  </PreferenceCategory>
+
+<!---
+  <PreferenceCategory android:title="Dialog Based Preferences">
+    <EditTextPreference android:key="edittext_preference"
+                        android:title="EditText Preference Title"
+                        android:summary="EditText Preference Summary"
+                        android:dialogTitle="Edit Text Preferrence Dialog Title" />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="Launch Preferences">
+
+    This PreferenceScreen tag serves as a screen break (similar to page break
+             in word processing). Like for other preference types, we assign a key
+             here so it is able to save and restore its instance state. 
+    <PreferenceScreen android:key="screen_preference"
+                      android:title="Title Screen Preferences"
+                      android:summary="Summary Screen Preferences">
+
+      You can place more preferences here that will be shown on the next screen. 
+
+      <CheckBoxPreference android:key="next_screen_checkbox_preference"
+                          android:title="Next Screen Toggle Preference Title"
+                          android:summary="Next Screen Toggle Preference Summary" />
+
+    </PreferenceScreen>
+
+    
+
+  </PreferenceCategory>
+-->
+</PreferenceScreen>

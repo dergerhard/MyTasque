@@ -1,0 +1,33 @@
+﻿<Properties>
+  <AuthorInfo Name="Gerhard Liebmann" Email="dergerhard@gmail.com" Copyright="Gerhard Liebmann" Company="" Trademark="" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MyTasque\MainActivity.cs">
+    <Files>
+      <File FileName="..\MyTasque.Lib\ITaskList.cs" Line="11" Column="52" />
+      <File FileName="..\MyTasque.Backends\DummyBackend\DummyTaskList.cs" Line="72" Column="80" />
+      <File FileName="MyTasque\TaskRepository.cs" Line="87" Column="6" />
+      <File FileName="..\MyTasque.Lib\Backend\IBackend.cs" Line="42" Column="19" />
+      <File FileName="MyTasque\Resources\xml\preferences.xml" Line="1" Column="1" />
+      <File FileName="MyTasque\Resources\values\Strings.xml" Line="44" Column="30" />
+      <File FileName="..\MyTasque.Lib\Backend\BackendManager.cs" Line="1" Column="1" />
+      <File FileName="..\MyTasque.Lib\Backend\BackendContext.cs" Line="20" Column="10" />
+      <File FileName="..\MyTasque.Lib\Backend\BackendInfo.cs" Line="1" Column="1" />
+      <File FileName="..\MyTasque.Backends\DummyBackend\DummyBackend.cs" Line="91" Column="41" />
+      <File FileName="MyTasque\NoteAdapter.cs" Line="53" Column="25" />
+      <File FileName="..\MyTasque.Lib\ITask.cs" Line="11" Column="11" />
+      <File FileName="MyTasque\TaskEditActivity.cs" Line="40" Column="51" />
+      <File FileName="MyTasque\TaskListAdapter.cs" Line="69" Column="79" />
+      <File FileName="MyTasque\TaskListFragment.cs" Line="24" Column="15" />
+      <File FileName="MyTasque\TaskListPagerAdapter.cs" Line="13" Column="41" />
+      <File FileName="MyTasque\MainActivity.cs" Line="43" Column="70" />
+      <File FileName="MyTasque\TasquePreferenceActivity.cs" Line="21" Column="61" />
+      <File FileName="..\MyTasque.Lib\INote.cs" Line="11" Column="12" />
+      <File FileName="..\MyTasque.Backends\DummyBackend\DummyTask.cs" Line="72" Column="71" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MyTasque AndroidDeviceId-Debug="emulator-5554" />
+</Properties>
