@@ -126,6 +126,9 @@ namespace MyTasque
 			// aapt resource value: 0x7f08000a
 			public const int edTaskText = 2131230730;
 			
+			// aapt resource value: 0x7f080016
+			public const int editText1 = 2131230742;
+			
 			// aapt resource value: 0x7f08000f
 			public const int imageButton1 = 2131230735;
 			
@@ -144,17 +147,23 @@ namespace MyTasque
 			// aapt resource value: 0x7f080015
 			public const int lvTasks = 2131230741;
 			
+			// aapt resource value: 0x7f08001b
+			public const int menuAbout = 2131230747;
+			
 			// aapt resource value: 0x7f080018
-			public const int menuAbout = 2131230744;
-			
-			// aapt resource value: 0x7f080017
-			public const int menuChangeTaskListName = 2131230743;
-			
-			// aapt resource value: 0x7f080016
-			public const int menuSettings = 2131230742;
+			public const int menuAddTaskList = 2131230744;
 			
 			// aapt resource value: 0x7f080019
-			public const int menuTaskEditSave = 2131230745;
+			public const int menuChangeTaskListName = 2131230745;
+			
+			// aapt resource value: 0x7f08001a
+			public const int menuDeleteTaskList = 2131230746;
+			
+			// aapt resource value: 0x7f080017
+			public const int menuSettings = 2131230743;
+			
+			// aapt resource value: 0x7f08001c
+			public const int menuTaskEditSave = 2131230748;
 			
 			// aapt resource value: 0x7f080001
 			public const int pager = 2131230721;
@@ -243,119 +252,137 @@ namespace MyTasque
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f05000e
-			public const int about = 2131034126;
+			// aapt resource value: 0x7f050014
+			public const int about = 2131034132;
+			
+			// aapt resource value: 0x7f050008
+			public const int adEnterTaskListName = 2131034120;
 			
 			// aapt resource value: 0x7f050001
 			public const int app_name = 2131034113;
 			
-			// aapt resource value: 0x7f050015
-			public const int backendCategoryTitle = 2131034133;
-			
-			// aapt resource value: 0x7f050019
-			public const int backendDefault = 2131034137;
-			
-			// aapt resource value: 0x7f05001a
-			public const int backendDialogTitle = 2131034138;
-			
 			// aapt resource value: 0x7f05001b
-			public const int backendTitle = 2131034139;
+			public const int backendCategoryTitle = 2131034139;
+			
+			// aapt resource value: 0x7f05001f
+			public const int backendDefault = 2131034143;
+			
+			// aapt resource value: 0x7f050020
+			public const int backendDialogTitle = 2131034144;
+			
+			// aapt resource value: 0x7f050021
+			public const int backendTitle = 2131034145;
 			
 			// aapt resource value: 0x7f050003
 			public const int btAdd = 2131034115;
 			
-			// aapt resource value: 0x7f05000d
-			public const int changeTaskListName = 2131034125;
-			
 			// aapt resource value: 0x7f050007
-			public const int completed = 2131034119;
+			public const int btCancel = 2131034119;
 			
-			// aapt resource value: 0x7f05001c
-			public const int displayCategoryTitle = 2131034140;
+			// aapt resource value: 0x7f050006
+			public const int btOk = 2131034118;
+			
+			// aapt resource value: 0x7f050010
+			public const int changeTaskListName = 2131034128;
+			
+			// aapt resource value: 0x7f05000a
+			public const int completed = 2131034122;
+			
+			// aapt resource value: 0x7f050022
+			public const int displayCategoryTitle = 2131034146;
 			
 			// aapt resource value: 0x7f050004
 			public const int dueOn = 2131034116;
 			
-			// aapt resource value: 0x7f050008
-			public const int edNewNoteHint = 2131034120;
+			// aapt resource value: 0x7f05000b
+			public const int edNewNoteHint = 2131034123;
 			
 			// aapt resource value: 0x7f050002
 			public const int edNewTaskHint = 2131034114;
 			
-			// aapt resource value: 0x7f050016
-			public const int infoCategoryTitle = 2131034134;
+			// aapt resource value: 0x7f05001c
+			public const int infoCategoryTitle = 2131034140;
 			
 			// aapt resource value: 0x7f050000
 			public const int library_name = 2131034112;
 			
-			// aapt resource value: 0x7f050006
-			public const int notes = 2131034118;
-			
-			// aapt resource value: 0x7f05001d
-			public const int orderByDefault = 2131034141;
-			
-			// aapt resource value: 0x7f05001e
-			public const int orderByDialogTitle = 2131034142;
-			
-			// aapt resource value: 0x7f05001f
-			public const int orderByTitle = 2131034143;
-			
-			// aapt resource value: 0x7f050012
-			public const int password = 2131034130;
-			
-			// aapt resource value: 0x7f050014
-			public const int passwordDialogTitle = 2131034132;
+			// aapt resource value: 0x7f050011
+			public const int menuAddTaskList = 2131034129;
 			
 			// aapt resource value: 0x7f050013
-			public const int passwordSummary = 2131034131;
+			public const int menuChangeTaskListName = 2131034131;
+			
+			// aapt resource value: 0x7f050012
+			public const int menuDeleteTaskList = 2131034130;
+			
+			// aapt resource value: 0x7f050009
+			public const int notes = 2131034121;
+			
+			// aapt resource value: 0x7f050023
+			public const int orderByDefault = 2131034147;
+			
+			// aapt resource value: 0x7f050024
+			public const int orderByDialogTitle = 2131034148;
+			
+			// aapt resource value: 0x7f050025
+			public const int orderByTitle = 2131034149;
+			
+			// aapt resource value: 0x7f050018
+			public const int password = 2131034136;
+			
+			// aapt resource value: 0x7f05001a
+			public const int passwordDialogTitle = 2131034138;
+			
+			// aapt resource value: 0x7f050019
+			public const int passwordSummary = 2131034137;
 			
 			// aapt resource value: 0x7f050005
 			public const int save = 2131034117;
 			
+			// aapt resource value: 0x7f05000f
+			public const int settings = 2131034127;
+			
+			// aapt resource value: 0x7f05002a
+			public const int showActive = 2131034154;
+			
+			// aapt resource value: 0x7f05002b
+			public const int showActiveSummary = 2131034155;
+			
+			// aapt resource value: 0x7f050026
+			public const int showCompleted = 2131034150;
+			
+			// aapt resource value: 0x7f050027
+			public const int showCompletedSummary = 2131034151;
+			
+			// aapt resource value: 0x7f050028
+			public const int showDiscarded = 2131034152;
+			
+			// aapt resource value: 0x7f050029
+			public const int showDiscardedSummary = 2131034153;
+			
+			// aapt resource value: 0x7f05000d
+			public const int taskCompleted = 2131034125;
+			
+			// aapt resource value: 0x7f05000e
+			public const int taskDueOn = 2131034126;
+			
 			// aapt resource value: 0x7f05000c
-			public const int settings = 2131034124;
+			public const int taskText = 2131034124;
 			
-			// aapt resource value: 0x7f050024
-			public const int showActive = 2131034148;
+			// aapt resource value: 0x7f05001e
+			public const int tasqueInternetSummary = 2131034142;
 			
-			// aapt resource value: 0x7f050025
-			public const int showActiveSummary = 2131034149;
+			// aapt resource value: 0x7f05001d
+			public const int tasqueInternetTitle = 2131034141;
 			
-			// aapt resource value: 0x7f050020
-			public const int showCompleted = 2131034144;
-			
-			// aapt resource value: 0x7f050021
-			public const int showCompletedSummary = 2131034145;
-			
-			// aapt resource value: 0x7f050022
-			public const int showDiscarded = 2131034146;
-			
-			// aapt resource value: 0x7f050023
-			public const int showDiscardedSummary = 2131034147;
-			
-			// aapt resource value: 0x7f05000a
-			public const int taskCompleted = 2131034122;
-			
-			// aapt resource value: 0x7f05000b
-			public const int taskDueOn = 2131034123;
-			
-			// aapt resource value: 0x7f050009
-			public const int taskText = 2131034121;
-			
-			// aapt resource value: 0x7f050018
-			public const int tasqueInternetSummary = 2131034136;
+			// aapt resource value: 0x7f050015
+			public const int username = 2131034133;
 			
 			// aapt resource value: 0x7f050017
-			public const int tasqueInternetTitle = 2131034135;
+			public const int usernameDialogTitle = 2131034135;
 			
-			// aapt resource value: 0x7f05000f
-			public const int username = 2131034127;
-			
-			// aapt resource value: 0x7f050011
-			public const int usernameDialogTitle = 2131034129;
-			
-			// aapt resource value: 0x7f050010
-			public const int usernameSummary = 2131034128;
+			// aapt resource value: 0x7f050016
+			public const int usernameSummary = 2131034134;
 			
 			static String()
 			{

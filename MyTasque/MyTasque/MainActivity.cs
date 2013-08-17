@@ -18,17 +18,21 @@ using FragmentPagerAdapter = Android.Support.V4.App.FragmentPagerAdapter;
 using FragmentTransaction = Android.App.FragmentTransaction;
 using Android.Util;
 using MyTasque.Lib.Backend;
+using MyTasque.Lib;
+using Android.Content.PM;
 
 
 namespace MyTasque
 {
-	[Activity (Label = "Tasque.Android", MainLauncher = true)]
+	[Activity (Label = "Tasque.Android", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
 	public class MainActivity : FragmentActivity, ActionBar.ITabListener
 	{
 
 		private ViewPager mViewPager;
 
 		private TaskListPagerAdapter mTaskListPageAdapter;
+
+		private IBackend backend;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -42,16 +46,13 @@ namespace MyTasque
 
 			TaskRepository.Instance.SetActiveBackendFromPreferences (this.GetSharedPreferences("preferences.xml", FileCreationMode.WorldWriteable));
 			TaskRepository.Instance.Manager.Backend.Sync ();
-			//ma.RefreshTaskLists ();
+			backend = TaskRepository.Instance.Manager.Backend;
 
-			//ma.TaskLists [0].CreateTask ("abcHHHHHHHH");
+			//Load data
+			backend.Sync ();
 
-			//Initialize libtasque Translator
-			//Translator.Instance.AppContext = this;
-
-			// Create the adapter that will return a fragment for each of the three primary sections
-			// of the app.
-			mTaskListPageAdapter = new TaskListPagerAdapter(this.SupportFragmentManager);
+			// find viewpager
+			mViewPager = (ViewPager) this.FindViewById<ViewPager>(Resource.Id.pager);
 
 			// Set up the action bar.
 			ActionBar actionBar = this.ActionBar;
@@ -63,13 +64,24 @@ namespace MyTasque
 			// Specify that we will be displaying tabs in the action bar.
 			actionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 
+			//Create tabbed view
+			this.RealoadTaskListView ();
+
+		}
+
+		public void RealoadTaskListView()
+		{
+			// Create the adapter that will return a fragment for each of the three primary sections
+			// of the app.
+			mTaskListPageAdapter = new TaskListPagerAdapter(this.SupportFragmentManager);
+
 			// Set up the ViewPager, attaching the adapter and setting up a listener for when the
 			// user swipes between sections.
-
-			mViewPager = (ViewPager) this.FindViewById<ViewPager>(Resource.Id.pager);
 			mViewPager.Adapter = mTaskListPageAdapter;
-			mViewPager.SetOnPageChangeListener (new PageChangeListener (actionBar));
+			mViewPager.SetOnPageChangeListener (new PageChangeListener (ActionBar));
 
+			//clear existing tabs
+			ActionBar.RemoveAllTabs();
 
 			// For each of the sections in the app, add a tab to the action bar.
 			for (int i = 0; i < mTaskListPageAdapter.Count; i++) 
@@ -77,14 +89,13 @@ namespace MyTasque
 				// Create a tab with text corresponding to the page title defined by the adapter.
 				// Also specify this Activity object, which implements the TabListener interface, as the
 				// listener for when this tab is selected.
-				actionBar.AddTab (actionBar.NewTab ()
+				ActionBar.AddTab (ActionBar.NewTab ()
 				                  .SetText (mTaskListPageAdapter.GetTaskListName (i))
 				                  .SetTabListener (this));
 			}
-			Log.Debug ("MainActivity", "OnCreate ready");
 
+			this.FindViewById<Button> (Resource.Id.btAddTask).Click += BtAddTaskClicked;
 		}
-
 
 
 		public override bool OnCreateOptionsMenu(IMenu menu)
@@ -94,15 +105,33 @@ namespace MyTasque
 			return true;
 		}
 
+
 		public override bool OnOptionsItemSelected(IMenuItem item)
 		{
 			switch (item.ItemId)
 			{
-				case Resource.Id.menuSettings:
+			case Resource.Id.menuSettings:
 				this.StartActivity (typeof(TasquePreferenceActivity));
 				break;
 
-				case Resource.Id.menuChangeTaskListName:
+			case Resource.Id.menuAddTaskList:
+				this.TaskListCreateChange(GetString (Resource.String.adEnterTaskListName)); 
+				break;
+
+			case Resource.Id.menuChangeTaskListName:
+				this.TaskListCreateChange (GetString (Resource.String.adEnterTaskListName), backend.AllTaskLists[mViewPager.CurrentItem].Name);
+				break;
+
+			case Resource.Id.menuDeleteTaskList:
+				try
+				{
+					backend.DeleteTaskList(backend.AllTaskLists[mViewPager.CurrentItem]);
+					this.RealoadTaskListView();
+					this.backend.Sync();
+				}
+				catch (Exception e) {
+					Toast.MakeText (this, e.Message.ToString (), ToastLength.Long).Show ();
+				}
 				break;
 
 				case Resource.Id.menuAbout:
@@ -112,17 +141,77 @@ namespace MyTasque
 		}
 
 
-		/*
-			 * int id = item.getItemId();
-    Log.d("item ID : ", "onOptionsItemSelected Item ID" + id);
-    if (id == android.R.id.home) {
-        rbmView.toggleMenu();
+		/// <summary>
+		/// Shows a dialog to change the name of a task list or create a new one
+		/// </summary>
+		/// <param name="title">Title.</param>
+		/// <param name="previousName">Previous name.</param>
+		public void TaskListCreateChange(string title, string previousName="")
+		{
+			AlertDialog.Builder dialog = new AlertDialog.Builder (this);
+			dialog.SetTitle (title);
+			string errorString = "";
+			EditText input = new EditText (this);
+			input.SetSingleLine ();
+			input.SetText (previousName, TextView.BufferType.Normal);
+			dialog.SetView(input);
+			dialog.SetPositiveButton(GetString(Resource.String.btOk), (sender, args) =>
+			{
+				if (input.Text.Count() >0)
+				{
+					if (previousName=="")
+					{
+						try 
+						{
+							backend.CreateTaskList(input.Text);
+						}
+						catch (Exception e)
+						{
+							errorString = e.Message.ToString();
+						}
+					}
+					else 
+					{
+						backend.AllTaskLists.Single(x => x.Name.Equals(previousName)).Name=input.Text;
+					}
 
-        return true;
+					try {
+						this.RealoadTaskListView();
+						backend.Sync();
+					} catch (Exception ex) {
+						Toast.MakeText(this, ex.Message.ToString(), ToastLength.Long).Show();
+					}
+				}
+			});
 
-    } else {
-        return super.onOptionsItemSelected(item);
-    }*/
+			dialog.SetNegativeButton(GetString(Resource.String.btCancel), (sender, args) =>
+			{
+				dialog.Dispose();
+			});
+			dialog.Show();
+
+			if (!errorString.Equals (""))
+				Toast.MakeText (this, errorString, ToastLength.Long).Show();
+		}
+
+	
+		/// <summary>
+		/// btAddTask.Click event. Adds a new task to the list.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
+		public void BtAddTaskClicked(object sender, EventArgs e)
+		{
+			ITaskList tl = backend.AllTaskLists [mViewPager.CurrentItem];
+			try
+			{
+				tl.CreateTask (this.FindViewById<EditText> (Resource.Id.edNewTask).Text, DateTime.Now, false);
+			}
+			catch (Exception ex)
+			{
+				Toast.MakeText(this, ex.Message.ToString(), ToastLength.Long).Show();
+			}
+		}
 
 
 		public void OnTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) 

@@ -51,11 +51,6 @@ namespace MyTasque.Lib.Backend
 		/// Sync the Task lists if it is initialized
 		/// </summary>
 		void Sync ();
-		
-		//TaskListRepository TaskListRepository { get; }
-		//TaskRepository TaskRepository { get; }
-		//NoteRepository NoteRepository { get; }
-
 	}
 }
 

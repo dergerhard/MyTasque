@@ -8,6 +8,12 @@ namespace MyTasque.Backends
 {
 	public class LocalTask : MyTasqueObject, ITask
 	{
+		public LocalTask()
+		{
+			Notes = new List<INote> ();
+			DeletedNotes = new List<INote> ();
+		}
+
 		/// <summary>
 		/// Gets the notes.
 		/// </summary>
@@ -136,7 +142,7 @@ namespace MyTasque.Backends
 		/// <param name="text">Text.</param>
 		public INote CreateNote(string text)
 		{
-			INote n = new DummyNote (text);
+			INote n = new LocalNote (text);
 			this.Add (n);
 			return n;
 		}

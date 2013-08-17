@@ -49,9 +49,26 @@ XamarinStudio stürzte je nach Version zwischen 5(beta) und 20(alpha)! mal am Ta
 RTM: Erzeugungsaktion ist auf NONE
 
 
+TODO
+----------------------------
+ - About Activity
+ - Add/delete Tasks to/from lists
+ 
+ - Delete Tasks
+ - Task Edit Activity
+ - Show Tasks according Preferences
+ 
+ - write Google Backend
+ 
+ - lib translator
+ - translations
+ 
+ - doc
 
 
 
+Abstract class / interface
+--------------------------------
 1. Are there many classes that can be "grouped together" and described by one noun? If so, have an abstract class by the name of this noun, and inherit the classes from it. (A key decider is that these classes share functionality, and you would never instantiate just an Animal... you would always instantiate a certain kind of Animal: an implementation of your Animal base class)
 Example: Cat and Dog can both inherit from abstract class Animal, and this abstract base class will implement a method void Breathe() which all animals will thus do in exactly the same fashion. (I might make this method virtual so that I can override it for certain animals, like Fish, which does not breath the same as most animals).
 

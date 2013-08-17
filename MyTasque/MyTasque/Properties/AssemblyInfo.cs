@@ -5,11 +5,11 @@ using Android.App;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 [assembly: AssemblyTitle ("MyTasque")]
-[assembly: AssemblyDescription ("")]
+[assembly: AssemblyDescription ("Task management app with local storage and Google Task storage")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("")]
+[assembly: AssemblyCompany ("FH Wiener Neustadt")]
 [assembly: AssemblyProduct ("")]
-[assembly: AssemblyCopyright ("Gerhard")]
+[assembly: AssemblyCopyright ("Gerhard Liebmann")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".

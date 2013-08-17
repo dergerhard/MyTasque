@@ -58,8 +58,10 @@ namespace MyTasque
 			backendInfos = new List<BackendInfo> ();
 
 			//Attention: Backend names must match the names in string-array-resourse "backendKeys"
-			BackendInfo dummyInfo = new BackendInfo ("Dummy Backend",  () => new DummyBackend ());
-			backendInfos.Add (dummyInfo);
+			//BackendInfo dummyInfo = new BackendInfo ("Dummy Backend",  () => new DummyBackend ());
+			BackendInfo localInfo = new BackendInfo ("Local Backend",  () => new LocalBackend ());
+			//backendInfos.Add (dummyInfo);
+			backendInfos.Add (localInfo);
 			// OTHER BACKENDS HERE
 
 			//BackendInfo rtmInfo = new BackendInfo ("RTM Backend", "", () => new RtmBackend ());

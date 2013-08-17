@@ -7,6 +7,10 @@ namespace MyTasque.Backends
 {
 	public class LocalNote : MyTasqueObject, INote
 	{
+		public LocalNote()
+		{
+		}
+
 		/// <summary>
 		/// Gets or sets the text.
 		/// </summary>

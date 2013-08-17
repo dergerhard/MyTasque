@@ -11,9 +11,7 @@ namespace MyTasque.Backends
 		public DummyNote()
 		{
 		}
-
-		public override int Id {get; set;}
-
+		
 		/// <summary>
 		/// Gets or sets the text.
 		/// </summary>

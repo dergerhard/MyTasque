@@ -26,11 +26,18 @@ namespace MyTasque
 		public TaskListPagerAdapter(FragmentManager fm) : base(fm)
 		{
 			this.TaskListFragments = new List<TaskListFragment> ();
+			this.ReloadData ();
+		}
+
+		public void ReloadData()
+		{
+			this.TaskListFragments.Clear ();
 			foreach (ITaskList tl in TaskRepository.Instance.Manager.Backend.AllTaskLists) 
 			{
 				TaskListFragments.Add(new TaskListFragment(tl));
 			}
 		}
+
 
 		public override Fragment GetItem(int i) 
 		{
