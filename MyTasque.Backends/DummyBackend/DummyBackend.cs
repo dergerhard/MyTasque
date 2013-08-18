@@ -7,6 +7,9 @@ using MyTasque.Lib;
 
 namespace MyTasque.Backends
 {
+	/// <summary>
+	/// Dummy backend - filled with test data that is only saved in memory
+	/// </summary>
 	public class DummyBackend : IBackend
 	{
 
@@ -25,13 +28,14 @@ namespace MyTasque.Backends
 			ServerTaskLists.Clear ();
 
 			ITaskList home = new DummyTaskList ("Home");
-			home.Add (new DummyTask ("clean floor", DateTime.Now.AddDays (5), false));
+			home.Add (new DummyTask ("do something", DateTime.Now.AddDays (5), false));
 			home.Add (new DummyTask ("clean kitchen", DateTime.Now.AddDays (3), false));
 			home.Add (new DummyTask ("bring out trash", DateTime.Now.AddDays (-2), true));
 			home.Add (new DummyTask ("feed cat",  DateTime.Now.AddDays (1), false));
 			DummyTask dt = new DummyTask ("cook cheescake", DateTime.Now.AddHours (-2), true);
 			dt.Add (new DummyNote ("buy curd"));
 			home.Add (dt);
+
 
 			ServerTaskLists.Add (home);
 
@@ -46,6 +50,7 @@ namespace MyTasque.Backends
 			ServerTaskLists.Add (work);
 
 			this.IsInitialized = true;
+
 		}
 
 		/// <summary>
@@ -88,8 +93,8 @@ namespace MyTasque.Backends
 			get {
 				if (this.IsInitialized)
 					return DummyTaskLists;
-				else 
-					throw new InvalidOperationException ("Can't call AllTaskLists because the backend is not initialized");
+				else //Translator.Instance.GetString("app_name")
+					throw new InvalidOperationException (Translator.Instance.GetString("DummyBackend.AllTaskListsNotInitialized"));
 			}
 		}
 
@@ -101,7 +106,7 @@ namespace MyTasque.Backends
 		public ITaskList CreateTaskList (string name)
 		{
 			if (!IsInitialized)
-				throw new InvalidOperationException ("Can't call CreateTaskList because the backend is not initialized");
+				throw new InvalidOperationException (Translator.Instance.GetString("DummyBackend.BackendNotInitialized"));
 
 			DummyTaskList tl = new DummyTaskList(name);
 			tl.Change = ChangeType.Created;
@@ -116,10 +121,10 @@ namespace MyTasque.Backends
 		public void DeleteTaskList (ITaskList tasklist)
 		{
 			if (!IsInitialized)
-				throw new InvalidOperationException ("Can't call DeleteTaskList because the backend is not initialized");
+				throw new InvalidOperationException (Translator.Instance.GetString("DummyBackend.BackendNotInitialized"));
 
 			if (!DummyTaskLists.Contains (tasklist))
-				throw new ArgumentException ("You can't delete this tasklist, because it does not exist", "tasklist");
+				throw new ArgumentException (Translator.Instance.GetString("DummyBackend.BackendNotInitialized"));
 
 			DeletedDummyTaskLists.Add (tasklist);
 			DummyTaskLists.Remove (tasklist);

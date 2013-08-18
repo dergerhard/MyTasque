@@ -3,4 +3,6 @@
 	<uses-sdk android:minSdkVersion="15" />
 	<application android:label="MyTasque"></application>
 	<uses-permission android:name="android.permission.INTERNET" />
+	<activity android:windowSoftInputMode="adjustResize" />
+	<activity android:windowSoftInputMode="adjustPan" />
 </manifest>

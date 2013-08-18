@@ -13,14 +13,19 @@ using Android.Preferences;
 
 namespace MyTasque
 {
+	/// <summary>
+	/// Tasque preference fragment.
+	/// </summary>
 	public class TasquePreferenceFragment : PreferenceFragment
 	{
+		/// <summary>
+		/// Raises the create event.
+		/// </summary>
+		/// <param name="savedInstanceState">Saved instance state.</param>
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
 			this.AddPreferencesFromResource (Resource.Xml.preferences);
-
-			// Create your fragment here
 		}
 	}
 }

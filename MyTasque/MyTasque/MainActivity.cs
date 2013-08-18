@@ -24,32 +24,45 @@ using Android.Content.PM;
 
 namespace MyTasque
 {
-	[Activity (Label = "Tasque.Android", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+	[Activity (Label = "@string/app_name", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
 	public class MainActivity : FragmentActivity, ActionBar.ITabListener
 	{
-
+		/// <summary>
+		/// The view pager of the HomeScreen.
+		/// </summary>
 		private ViewPager mViewPager;
 
+		/// <summary>
+		/// The task list page adapter for horizontal swiping.
+		/// </summary>
 		private TaskListPagerAdapter mTaskListPageAdapter;
 
+		/// <summary>
+		/// The backend. For easier acces (avoiding TaskRepository.Instance.Manager.Backend)
+		/// </summary>
 		private IBackend backend;
 
+		/// <summary>
+		/// Raises the create event.
+		/// </summary>
+		/// <param name="bundle">Bundle.</param>
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
 			// Set our view from the "main" layout resource
-			SetContentView (Resource.Layout.HomeScreen);
+			this.SetContentView (Resource.Layout.HomeScreen);
+
+			//define platform specific translator
+			Translator.Instance.ConcreteTranslator = new AndroidTranslator (this);
 
 			//Initialize Backend/TaskRepository
 			BackendManager ma = TaskRepository.Instance.Manager;
+			TaskRepository.Instance.Activity = this;
 
-			TaskRepository.Instance.SetActiveBackendFromPreferences (this.GetSharedPreferences("preferences.xml", FileCreationMode.WorldWriteable));
-			TaskRepository.Instance.Manager.Backend.Sync ();
+			//Load the correct backend
+			TaskRepository.Instance.SetActiveBackendFromPreferencesAndInitializeAndSync ();
 			backend = TaskRepository.Instance.Manager.Backend;
-
-			//Load data
-			backend.Sync ();
 
 			// find viewpager
 			mViewPager = (ViewPager) this.FindViewById<ViewPager>(Resource.Id.pager);
@@ -66,11 +79,29 @@ namespace MyTasque
 
 			//Create tabbed view
 			this.RealoadTaskListView ();
-
 		}
 
+		/// <summary>
+		/// Raises the pause event. Use to sync Tasks.
+		/// </summary>
+		protected override void OnPause ()
+		{
+			base.OnPause ();
+			backend.Sync ();
+		}
+
+		/// <summary>
+		/// Creates/Reloads the TaskLists swipe fragments
+		/// </summary>
 		public void RealoadTaskListView()
 		{
+			//ensure all is configured correctly and synced
+			backend = TaskRepository.Instance.Manager.Backend;
+
+			if (mTaskListPageAdapter!=null)
+				mTaskListPageAdapter.Dispose ();
+
+
 			// Create the adapter that will return a fragment for each of the three primary sections
 			// of the app.
 			mTaskListPageAdapter = new TaskListPagerAdapter(this.SupportFragmentManager);
@@ -94,10 +125,22 @@ namespace MyTasque
 				                  .SetTabListener (this));
 			}
 
-			this.FindViewById<Button> (Resource.Id.btAddTask).Click += BtAddTaskClicked;
 		}
 
+		/// <summary>
+		/// Restart this instance.
+		/// </summary>
+		public void Restart()
+		{
+			Intent intent = this.Intent;
+			this.Finish();
+			this.StartActivity(intent);
+		}
 
+		/// <summary>
+		/// Raises the create options menu event.
+		/// </summary>
+		/// <param name="menu">Menu.</param>
 		public override bool OnCreateOptionsMenu(IMenu menu)
 		{
 			MenuInflater inflater = this.MenuInflater;
@@ -105,7 +148,10 @@ namespace MyTasque
 			return true;
 		}
 
-
+		/// <summary>
+		/// Raises the options item selected event.
+		/// </summary>
+		/// <param name="item">Item.</param>
 		public override bool OnOptionsItemSelected(IMenuItem item)
 		{
 			switch (item.ItemId)
@@ -125,16 +171,31 @@ namespace MyTasque
 			case Resource.Id.menuDeleteTaskList:
 				try
 				{
-					backend.DeleteTaskList(backend.AllTaskLists[mViewPager.CurrentItem]);
-					this.RealoadTaskListView();
-					this.backend.Sync();
+					AlertDialog.Builder dialog = new AlertDialog.Builder (this);
+					dialog.SetTitle (this.GetString(Resource.String.deleteTaskListTitle));
+					dialog.SetMessage(this.GetString(Resource.String.deleteTaskListMessage));
+
+					dialog.SetPositiveButton(GetString(Resource.String.btOk), (sender, args) =>
+					                         {
+						backend.DeleteTaskList(backend.AllTaskLists[mViewPager.CurrentItem]);
+						this.RealoadTaskListView();
+						this.backend.Sync();
+					});
+
+					dialog.SetNegativeButton(GetString(Resource.String.btCancel), (sender, args) =>
+					                         {
+						dialog.Dispose();
+					});
+					dialog.Show();
+
 				}
 				catch (Exception e) {
 					Toast.MakeText (this, e.Message.ToString (), ToastLength.Long).Show ();
 				}
 				break;
 
-				case Resource.Id.menuAbout:
+			case Resource.Id.menuAbout:
+				this.StartActivity (typeof(AboutActivity));
 				break;
 			}
 			return true;
@@ -196,43 +257,34 @@ namespace MyTasque
 
 	
 		/// <summary>
-		/// btAddTask.Click event. Adds a new task to the list.
+		/// Raises the tab unselected event.
 		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="e">E.</param>
-		public void BtAddTaskClicked(object sender, EventArgs e)
-		{
-			ITaskList tl = backend.AllTaskLists [mViewPager.CurrentItem];
-			try
-			{
-				tl.CreateTask (this.FindViewById<EditText> (Resource.Id.edNewTask).Text, DateTime.Now, false);
-			}
-			catch (Exception ex)
-			{
-				Toast.MakeText(this, ex.Message.ToString(), ToastLength.Long).Show();
-			}
-		}
-
-
+		/// <param name="tab">Tab.</param>
+		/// <param name="fragmentTransaction">Fragment transaction.</param>
 		public void OnTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) 
 		{
+			//nothing todo here
 		}
 
+		/// <summary>
+		/// Raises the tab selected event.
+		/// </summary>
+		/// <param name="tab">Tab.</param>
+		/// <param name="fragmentTransaction">Fragment transaction.</param>
 		public void OnTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) 
 		{
 			// When the given tab is selected, switch to the corresponding page in the ViewPager.
 			mViewPager.CurrentItem = tab.Position;
 		}
 
+		/// <summary>
+		/// Raises the tab reselected event.
+		/// </summary>
+		/// <param name="tab">Tab.</param>
+		/// <param name="fragmentTransaction">Fragment transaction.</param>
 		public void OnTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) 
 		{
 		}
-
-
-
-
-
-
 
 	}
 
@@ -240,17 +292,28 @@ namespace MyTasque
 
 
 	/// <summary>
-	/// Page change listener. nee
+	/// Page change listener. 
 	/// </summary>
 	public class PageChangeListener : ViewPager.SimpleOnPageChangeListener
 	{
+		/// <summary>
+		/// The action bar for selecting the right tab on page change.
+		/// </summary>
 		ActionBar actionBar;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MyTasque.PageChangeListener"/> class.
+		/// </summary>
+		/// <param name="ab">Ab.</param>
 		public PageChangeListener(ActionBar ab)
 		{
 			this.actionBar = ab;
 		}
 
+		/// <summary>
+		/// Raises the page selected event.
+		/// </summary>
+		/// <param name="position">Position.</param>
 		public override void OnPageSelected(int position) 
 		{
 			// When swiping between different app sections, select the corresponding tab.

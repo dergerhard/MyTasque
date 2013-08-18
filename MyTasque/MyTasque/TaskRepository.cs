@@ -12,6 +12,7 @@ using Android.Widget;
 using MyTasque.Backends;
 using MyTasque.Lib;
 using MyTasque.Lib.Backend;
+using Android.Preferences;
 
 namespace MyTasque
 {
@@ -42,12 +43,18 @@ namespace MyTasque
 		/// <summary>
 		/// The preferences.
 		/// </summary>
-		private ISharedPreferences preferences;
+		private ISharedPreferences preferences = null;
 
 		/// <summary>
 		/// The backend infos.
 		/// </summary>
 		private List<BackendInfo> backendInfos;
+
+		/// <summary>
+		/// Gets or sets the MainActivity, for notifying operations.
+		/// </summary>
+		/// <value>The activity.</value>
+		public MainActivity Activity { get; set; }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Tasque.TaskRepository"/> class.
@@ -58,14 +65,18 @@ namespace MyTasque
 			backendInfos = new List<BackendInfo> ();
 
 			//Attention: Backend names must match the names in string-array-resourse "backendKeys"
-			//BackendInfo dummyInfo = new BackendInfo ("Dummy Backend",  () => new DummyBackend ());
-			BackendInfo localInfo = new BackendInfo ("Local Backend",  () => new LocalBackend ());
-			//backendInfos.Add (dummyInfo);
-			backendInfos.Add (localInfo);
-			// OTHER BACKENDS HERE
+			BackendInfo dummyInfo = new BackendInfo ("dummy",  () => new DummyBackend ());
+			BackendInfo localInfo = new BackendInfo ("local",  () => new LocalBackend ());
 
-			//BackendInfo rtmInfo = new BackendInfo ("RTM Backend", "", () => new RtmBackend ());
-			//backendInfos.Add (rtmInfo);
+			//TODO: these still are not implemented
+			BackendInfo rtmInfo = new BackendInfo ("rtm",  () => new DummyBackend ());
+			BackendInfo googleInfo = new BackendInfo ("google",  () => new DummyBackend ());
+
+			backendInfos.Add (dummyInfo);
+			backendInfos.Add (localInfo);
+			backendInfos.Add (rtmInfo);
+			backendInfos.Add (googleInfo);
+			// OTHER BACKENDS HERE
 
 			Manager = new BackendManager (backendInfos);
 
@@ -77,46 +88,54 @@ namespace MyTasque
 		/// Sets the active backend from preferences.The preferences only have to be supplied the first time.
 		/// </summary>
 		/// <param name="pref">Preference.</param>
-		public void SetActiveBackendFromPreferences(ISharedPreferences pref = null)
+		public void SetActiveBackendFromPreferencesAndInitializeAndSync()
 		{
-			if (pref != null)
-				this.preferences = pref;
+			if (preferences == null) 
+				this.preferences = this.preferences = PreferenceManager.GetDefaultSharedPreferences (this.Activity);
 
-			string selectedBackend = preferences.GetString ("backendKeys", "");
-			foreach (BackendInfo info in Manager.AvailableBackends)
+			if (this.Activity == null)
+				throw new InvalidOperationException ("TaskRepository must be initialized with the MainActivity");
+
+			this.preferences = PreferenceManager.GetDefaultSharedPreferences (this.Activity);
+
+			if (this.Manager.Backend != null)
+				this.Manager.Backend.Dispose ();
+
+			string selectedBackend = preferences.GetString ("backend", Activity.GetString(Resource.String.backendDefault));
+			bool foundBackend = false;
+			foreach (BackendInfo info in Manager.AvailableBackends) 
 			{
-				if (info.BackendName.Equals(selectedBackend))
+				if (info.BackendName.Equals (selectedBackend)) 
 				{
 					Manager.CurrentBackend = info;
+					foundBackend = true;
 					break;
 				}
 			}
+
+			if (!foundBackend)
+				throw new InvalidOperationException ("The configured backend was not found");
 			BackendContext ctx = new BackendContext ();
-			//ctx.Username = "";
 
 			Manager.Backend.Initialize (ctx);
 			Manager.Backend.Sync ();
+
+			this.OrderTasks ();
 		}
 
-
-		/*manager.CurrentBackendInitialized += delegate { Console.WriteLine ("Initialized"); };
-			manager.InitializeCurrentBackend ();
-			manager.RefreshTaskLists ();
-
-			foreach (var item in manager.TaskLists) 
-			{
-				Console.WriteLine (item.Name);
-				foreach (var task in item) 
-				{
-					Console.WriteLine ("\t" + task.Text);
-					foreach (var note in task.Notes) 
-					{
-						Console.WriteLine ("\t\t" + note.Title);
-						Console.WriteLine ("\t\t" + note.Text);
-					}
-				}
-			}*/
-
+		/// <summary>
+		/// Orders the tasks according to the preferences.
+		/// </summary>
+		public void OrderTasks()
+		{
+			if (preferences.GetString ("orderBy", "name").Equals ("name"))
+				foreach (var tl in Manager.Backend.AllTaskLists)
+					tl.OrderTasksBy (OrderByType.Name);
+			else 
+				foreach (var tl in Manager.Backend.AllTaskLists)
+					tl.OrderTasksBy (OrderByType.DueDate);
+		}
+		
 		/// <summary>
 		/// Gets the instance.
 		/// </summary>

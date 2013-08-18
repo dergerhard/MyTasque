@@ -7,6 +7,11 @@ namespace MyTasque.Lib.Backend
 	/// </summary>
 	public class BackendInfo
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MyTasque.Lib.Backend.BackendInfo"/> class.
+		/// </summary>
+		/// <param name="backendName">Backend name.</param>
+		/// <param name="createFunc">Create func.</param>
 		public BackendInfo (string backendName, Func<IBackend> createFunc)
 		{
 			if (backendName == null)
@@ -19,8 +24,16 @@ namespace MyTasque.Lib.Backend
 			CreateInstance = createFunc;
 		}
 
+		/// <summary>
+		/// Gets the name of the backend.
+		/// </summary>
+		/// <value>The name of the backend.</value>
 		public string BackendName { get; private set; }
 
+		/// <summary>
+		/// Gets the create instance.
+		/// </summary>
+		/// <value>The create instance.</value>
 		public Func<IBackend> CreateInstance { get; private set; }
 	}
 }

@@ -10,8 +10,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/lvTasks"
         android:layout_weight="10" />
-    <EditText
+    <ImageButton
+        android:src="@drawable/Add"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText1" />
+        android:id="@+id/btAddNewTask"
+        android:background="@null" />
 </LinearLayout>

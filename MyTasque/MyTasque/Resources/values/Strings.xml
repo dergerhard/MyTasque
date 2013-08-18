@@ -4,14 +4,19 @@
 	<string name="app_name">Android.MyTasque</string>
 	<string name="edNewTaskHint">new task...</string>
 	<string name="btAdd">Add</string>
-	<string name="dueOn">Due on:</string>
+	<string name="dueOn">Due on: </string>
 	<string name="save">Save</string>
 
 	<string name="btOk">OK</string>
 	<string name="btCancel">Cancel</string>
 	<string name="adEnterTaskListName">Enter task list name</string>
 	
+	<string name="deleteTaskListTitle">Delete task list</string>
+	<string name="deleteTaskListMessage">If you delete this list, all tasks and notes in this list will be deleted too. Do you want to proceed?</string>
 			
+	<string name="deleteTaskTitle">Delete task</string>
+	<string name="deleteTaskMessage">Do you really want to delete this task list and all its notes?</string>
+	
 	<!-- TaskEditActivity -->
 	<string name="notes">Notes:</string>
 	<string name="completed">Completed</string>
@@ -19,6 +24,24 @@
 	<string name="taskText">Task</string>
 	<string name="taskCompleted">Completed</string>
 	<string name="taskDueOn">Due on</string>
+	<string name="taskNameCannotBeEmpty">The task name cannot be empty</string>
+	<string name="dueDate">Due date:</string>
+	<string name="dueTime">Due time:</string>
+	<string name="createNoteTitle">Create note:</string>
+	<string name="editNoteTitle">Edit note:</string>
+	
+	<!-- About Activity -->
+	<string name="AboutActivity">About MyTasque</string>
+	<string name="Author">Gerhard Liebmann</string>
+	<string name="Institution">FH Wiener Neustadt</string>
+	<string name="Date">18.08.2013</string>
+	
+	<!-- TaskListFragment -->
+	<string name="createNewTaskTitle">New task:</string>
+	
+	<!-- TaskListAdapter-->
+	<string name="note">note</string>
+	<string name="notes">notes</string>
 	
 	<!-- ActionBar Menu -->
 	<string name="settings">Settings</string>
@@ -46,12 +69,14 @@
         <item name="1">Local Backend</item>
         <item name="2">RememberTheMilk Backend</item>
         <item name="3">Google Backend</item>
+        <item name="4">Dummy Backend</item>
     </string-array>
     
     <string-array name="backendValues">
         <item name="1">local</item>
         <item name="2">rtm</item>
         <item name="3">google</item>
+        <item name="4">dummy</item>
     </string-array>
     
     <string name="backendDefault">local</string>
@@ -67,40 +92,29 @@
 	<string-array name="orderByKeys">
         <item name="1">name</item>
         <item name="2">due date</item>
-        <item name="3">priority</item>
     </string-array>
     
     <string-array name="orderByValues">
-        <item name="1">name</item>
-        <item name="2">due date</item>
-        <item name="3">priority</item>
+        <item name="1">Name</item>
+        <item name="2">Due date</item>
     </string-array>
-    
-    <!---
-    <string name="orderAscDscDefault">ascending</string>
-    <string name="orderAscDscDialogTitle">Order type:</string>
-    <string name="orderAscDscTitle">Order type</string>
 
-	<string-array name="orderAscDscKeys">
-        <item name="1">ascending</item>
-        <item name="2">descending</item>
-    </string-array>
-    
-    <string-array name="orderAscDscValues">
-        <item name="1">ascending</item>
-        <item name="2">descending</item>
-    </string-array>-->
     
     <string name="showCompleted">Show completed tasks</string>
     <string name="showCompletedSummary">Show completed tasks</string>
     
-    <string name="showDiscarded">Show discarded tasks</string>
-    <string name="showDiscardedSummary">Show discarded tasks</string>
-    
     <string name="showActive">Show active tasks</string>
     <string name="showActiveSummary">Show active tasks</string>
     
+    <string name="TasquePreferenceActivity">Preferences</string>
+    <string name="TaskEditActivity">Edit Task</string>
     
+    <!-- Backend strings for AndroidTranslator-->
+    <string name="DummyBackend.BackendNotInitialized">The backend is not initialized. Operation aborted.</string>
+    <string name="DummyBackend.DeleteTaskList.ListNotExists">You can\'t delete this tasklist, because it does not exist</string>
+    <string name="LocalBackend.BackendNotInitialized">The backend is not initialized. Operation aborted.</string>
+	<string name="LocalBackend.CreateTaskList.ListAlreadyExists">A task list with the same name already exists</string>
+	<string name="LocalBackend.DeleteTaskList.ListNotExists">You can\'t delete this tasklist, because it does not exist</string>
 
 
 </resources>

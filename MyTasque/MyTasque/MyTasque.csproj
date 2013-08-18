@@ -15,7 +15,7 @@
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AssemblyName>MyTasque</AssemblyName>
-    <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -58,6 +58,10 @@
     <Compile Include="TaskRepository.cs" />
     <Compile Include="TasquePreferenceActivity.cs" />
     <Compile Include="TasquePreferenceFragment.cs" />
+    <Compile Include="DatePickerDialogFragment.cs" />
+    <Compile Include="TimePickerDialogFragment.cs" />
+    <Compile Include="AboutActivity.cs" />
+    <Compile Include="AndroidTranslator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -70,10 +74,8 @@
     <AndroidResource Include="Resources\drawable\Add.png" />
     <AndroidResource Include="Resources\drawable\Delete.png" />
     <AndroidResource Include="Resources\drawable\Edit.png" />
-    <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\drawable\NoteBackground.xml" />
     <AndroidResource Include="Resources\drawable\Save.png" />
-    <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\layout\HomeScreen.axml" />
     <AndroidResource Include="Resources\layout\NoteItem.axml" />
     <AndroidResource Include="Resources\layout\TaskEditScreen.axml" />
@@ -82,6 +84,11 @@
     <AndroidResource Include="Resources\menu\ActionBar.axml" />
     <AndroidResource Include="Resources\menu\ActionBarTaskEdit.axml" />
     <AndroidResource Include="Resources\xml\preferences.xml" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\layout\About.axml" />
+    <AndroidResource Include="Resources\values-de\Strings.xml" />
+    <AndroidResource Include="Resources\drawable\Info.png" />
+    <AndroidResource Include="Resources\drawable\Settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

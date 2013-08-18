@@ -15,9 +15,9 @@ namespace MyTasque.Backends
 		}
 
 		//Tasks are being saved here
-		private IList<ITask> Tasks = new List<ITask>();
+		private List<ITask> Tasks = new List<ITask>();
 
-		private IList<ITask> DeletedTasks = new List<ITask> ();
+		private List<ITask> DeletedTasks = new List<ITask> ();
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MyTasque.Backends.LocalTaskList"/> class.
@@ -146,6 +146,23 @@ namespace MyTasque.Backends
 			ITask t = new LocalTask (name, dueDate, completed);
 			this.Add (t);
 			return t;
+		}
+
+		/// <summary>
+		/// Orders by OrderByType.
+		/// </summary>
+		/// <param name="type">Type.</param>
+		public void OrderTasksBy(OrderByType type)
+		{
+			switch (type) {
+				case OrderByType.Name:
+				Tasks.Sort ((x,y) => string.Compare (x.Name, y.Name));
+				break;
+
+				case OrderByType.DueDate:
+				Tasks.Sort ((x,y) => DateTime.Compare (x.DueDate, y.DueDate));
+				break;
+			}
 		}
 
 

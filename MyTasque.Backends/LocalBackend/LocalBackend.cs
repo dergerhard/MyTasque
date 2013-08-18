@@ -8,10 +8,13 @@ using MyTasque.Lib;
 
 namespace MyTasque.Backends
 {
-	enum SyncOperation { Read, Write };
-
+	/// <summary>
+	/// Local backend. Tasks are stored as xml
+	/// </summary>
 	public class LocalBackend : IBackend
 	{
+
+		enum SyncOperation { Read, Write };
 
 		/// <summary>
 		/// The local task lists.
@@ -163,7 +166,7 @@ namespace MyTasque.Backends
 				if (this.IsInitialized)
 					return LocalTaskLists;
 				else 
-					throw new InvalidOperationException ("Can't call AllTaskLists because the backend is not initialized");
+					throw new InvalidOperationException (Translator.Instance.GetString("LocalBackend.BackendNotInitialized"));
 			}
 		}
 
@@ -175,11 +178,11 @@ namespace MyTasque.Backends
 		public ITaskList CreateTaskList (string name)
 		{
 			if (!IsInitialized)
-				throw new InvalidOperationException ("Can't call CreateTaskList because the backend is not initialized");
+				throw new InvalidOperationException (Translator.Instance.GetString("LocalBackend.BackendNotInitialized"));
 
 			foreach (ITaskList tll in LocalTaskLists)
 				if (tll.Name.Equals (name))
-					throw new ArgumentException ("A task list with the same name already exists");
+					throw new ArgumentException (Translator.Instance.GetString("LocalBackend.CreateTaskList.ListAlreadyExists"));
 
 			LocalTaskList tl = new LocalTaskList(name);
 			tl.Change = ChangeType.Created;
@@ -194,10 +197,10 @@ namespace MyTasque.Backends
 		public void DeleteTaskList (ITaskList tasklist)
 		{
 			if (!IsInitialized)
-				throw new InvalidOperationException ("Can't call DeleteTaskList because the backend is not initialized");
+				throw new InvalidOperationException (Translator.Instance.GetString("LocalBackend.BackendNotInitialized"));
 
 			if (!LocalTaskLists.Contains (tasklist))
-				throw new ArgumentException ("You can't delete this tasklist, because it does not exist", "tasklist");
+				throw new ArgumentException (Translator.Instance.GetString("LocalBackend.DeleteTaskList.ListNotExists"));
 
 			LocalTaskLists.Remove (tasklist);
 		}

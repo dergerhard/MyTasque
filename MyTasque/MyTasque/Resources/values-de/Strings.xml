@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- MainActivity Buttons-->
+	<string name="app_name">Android.MyTasque</string>
+	<string name="edNewTaskHint">Neue Aufgabe...</string>
+	<string name="btAdd">Hinzufügen</string>
+	<string name="dueOn">Fällig am: </string>
+	<string name="save">Speichern</string>
+
+	<string name="btOk">OK</string>
+	<string name="btCancel">Abbrechen</string>
+	<string name="adEnterTaskListName">Name der Aufgabenlisten eingeben</string>
+	
+	<string name="deleteTaskListTitle">Aufgabenliste löschen</string>
+	<string name="deleteTaskListMessage">Wenn Sie diese Aufgabenliste löschen, werden alle darin enthaltenen Aufgaben und Notizen auch gelöscht. Wollen Sie fortfahren?</string>
+			
+	<string name="deleteTaskTitle">Aufgabe löschen</string>
+	<string name="deleteTaskMessage">Wollen sie diese Aufgabe und alle dazugehörigen Notizen wirklich löschen?</string>
+	
+	<!-- TaskEditActivity -->
+	<string name="notes">Notizen:</string>
+	<string name="completed">Erledigt</string>
+	<string name="edNewNoteHint">Neue Notiz...</string>
+	<string name="taskText">Aufgabe</string>
+	<string name="taskCompleted">Erledigt</string>
+	<string name="taskDueOn">Fällig am</string>
+	<string name="taskNameCannotBeEmpty">Die Aufgabe muss einen Namen haben</string>
+	<string name="dueDate">Fällig am:</string>
+	<string name="dueTime">Fällig um:</string>
+	<string name="createNoteTitle">Notiz erstellen:</string>
+	<string name="editNoteTitle">Notiz ändern:</string>
+	
+	<!-- About Activity -->
+	<string name="AboutActivity">Über MyTasque</string>
+	<string name="Author">Gerhard Liebmann</string>
+	<string name="Institution">FH Wiener Neustadt</string>
+	<string name="Date">18.08.2013</string>
+	
+	<!-- TaskListFragment -->
+	<string name="createNewTaskTitle">Neue Aufgabe:</string>
+	
+	<!-- TaskListAdapter-->
+	<string name="note">Notiz</string>
+	<string name="notes">Notizen</string>
+	
+	<!-- ActionBar Menu -->
+	<string name="settings">Einstellungen</string>
+	<string name="changeTaskListName">Aufgabenlistenname ändern</string>
+	<string name="menuAddTaskList">Aufgabenliste hinzufügen</string>
+	<string name="menuDeleteTaskList">Aufgabenliste löschen</string>
+	<string name="menuChangeTaskListName">Aufgabenlist ändern</string>
+	<string name="about">Über</string>
+	
+	<!-- Settings Screen -->
+	<string name="username">Benutzername</string>
+	<string name="usernameSummary">Benutzername für das Backend</string>
+	<string name="usernameDialogTitle">Benutzername hier eingeben:</string>
+	
+	<string name="password">Passwort</string>
+	<string name="passwordSummary">Passwort für das Backend</string>
+	<string name="passwordDialogTitle">Passwort hier eingeben:</string>
+		
+	<string name="backendCategoryTitle">Backend Konfiguration</string>
+	<string name="infoCategoryTitle">Info</string>
+	<string name="tasqueInternetTitle">MyTasque im Internet</string>
+	<string name="tasqueInternetSummary">Besuchen sie MyTasque im Internet</string>
+	
+	<string-array name="backendKeys">
+        <item name="1">Locales Backend</item>
+        <item name="2">RememberTheMilk Backend</item>
+        <item name="3">Google Backend</item>
+        <item name="4">Dummy Backend</item>
+    </string-array>
+    
+    <string-array name="backendValues">
+        <item name="1">local</item>
+        <item name="2">rtm</item>
+        <item name="3">google</item>
+        <item name="4">dummy</item>
+    </string-array>
+    
+    <string name="backendDefault">local</string>
+    <string name="backendDialogTitle">Speicherart:</string>
+    <string name="backendTitle">Wählen Sie die Speicherart</string>
+
+	<string name="displayCategoryTitle">Anzeigeoptionen</string>
+	
+	<string name="orderByDefault">name</string>
+    <string name="orderByDialogTitle">Aufgaben sortieren...</string>
+    <string name="orderByTitle">Sortierung wählen</string>
+
+	<string-array name="orderByKeys">
+        <item name="1">Name</item>
+        <item name="2">Fälligkeitsdatum</item>
+    </string-array>
+    
+    <string-array name="orderByValues">
+        <item name="1">name</item>
+        <item name="2">due date</item>
+    </string-array>
+
+    
+    <string name="showCompleted">Erledigte Aufgaben anzeigen</string>
+    <string name="showCompletedSummary">Erledigte Aufgaben anzeigen</string>
+    
+    <string name="showActive">Aktive Aufgaben anzeigen</string>
+    <string name="showActiveSummary">Aktive Aufgaben anzeigen</string>
+    
+    <string name="TasquePreferenceActivity">Einstellungen</string>
+    <string name="TaskEditActivity">Aufgabe bearbeiten</string>
+    
+    <!-- Backend strings for AndroidTranslator-->
+    <string name="DummyBackend.BackendNotInitialized">Das Backend ist nicht initialisiert. Die Operation wurde abgebrochen.</string>
+    <string name="DummyBackend.DeleteTaskList.ListNotExists">Diese Aufgabenliste kann nicht gelöscht werden.</string>
+    <string name="LocalBackend.BackendNotInitialized">Das Backend ist nicht initialisiert. Die Operation wurde abgebrochen.</string>
+	<string name="LocalBackend.CreateTaskList.ListAlreadyExists">Eine Aufgabenliste mit demselben Namen existiert bereits!</string>
+	<string name="LocalBackend.DeleteTaskList.ListNotExists">Diese Aufgabenliste kann nicht gelöscht werden</string>
+
+
+</resources>

@@ -8,15 +8,14 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.Preferences;
 
 namespace MyTasque
 {
 	/// <summary>
-	/// Tasque preference activity - Standard implementation for managing preferences
+	/// About activity.
 	/// </summary>
-	[Activity (Label = "@string/TasquePreferenceActivity")]			
-	public class TasquePreferenceActivity : PreferenceActivity
+	[Activity (Label = "@string/AboutActivity")]			
+	public class AboutActivity : Activity
 	{
 		/// <summary>
 		/// Raises the create event.
@@ -25,16 +24,7 @@ namespace MyTasque
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			this.AddPreferencesFromResource (Resource.Xml.preferences);
-		}
-
-		/// <summary>
-		/// Raises the destroy event.
-		/// </summary>
-		protected override void OnDestroy ()
-		{
-			base.OnDestroy ();
-			TaskRepository.Instance.Activity.Restart ();
+			this.SetContentView (Resource.Layout.About);
 		}
 	}
 }

@@ -33,31 +33,19 @@
         android:entryValues="@array/orderByValues"
         android:defaultValue="@string/orderByDefault" />
         
-    <!---
-    <ListPreference
-        android:key="orderAscDsc"
-        android:title="@string/orderAscDscTitle"
-        android:dialogTitle="@string/orderAscDscDialogTitle"
-        android:entries="@array/orderAscDscKeys"
-        android:entryValues="@array/orderAscDscValues"
-        android:defaultValue="@string/orderAscDscDefault" /> -->
+  
     
      <CheckBoxPreference
         android:key="showCompleted"
         android:title="@string/showCompleted"
         android:summary="@string/showCompletedSummary"
         android:defaultValue="true" />
-     <CheckBoxPreference
-        android:key="showDiscarded"
-        android:title="@string/showDiscarded"
-        android:summary="@string/showDiscardedSummary"
-        android:defaultValue="true" />
-     <CheckBoxPreference
+     <!---<CheckBoxPreference
         android:key="showActive"
         android:title="@string/showActive"
         android:summary="@string/showActiveSummary"
         android:defaultValue="true" />
-        
+        -->
             
     
         

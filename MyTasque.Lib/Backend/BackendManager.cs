@@ -4,8 +4,15 @@ using System.Collections.ObjectModel;
 
 namespace MyTasque.Lib.Backend
 {
+	/// <summary>
+	/// Backend manager.
+	/// </summary>
 	public class BackendManager
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MyTasque.Lib.Backend.BackendManager"/> class.
+		/// </summary>
+		/// <param name="backendInfos">Backend infos.</param>
 		public BackendManager (IList<BackendInfo> backendInfos)
 		{
 			if (backendInfos == null)
@@ -14,14 +21,30 @@ namespace MyTasque.Lib.Backend
 				throw new ArgumentException ("backendInfos must at least have one element");
 
 			AvailableBackends = new ReadOnlyCollection<BackendInfo> (backendInfos);
+			this.Backend = null;
 		}
 
+		/// <summary>
+		/// Gets the available backends.
+		/// </summary>
+		/// <value>The available backends.</value>
 		public ReadOnlyCollection<BackendInfo> AvailableBackends { get; private set; }
 
+		/// <summary>
+		/// The current backend info.
+		/// </summary>
 		private BackendInfo currentBackendInfo;
 
+		/// <summary>
+		/// Gets the backend.
+		/// </summary>
+		/// <value>The backend.</value>
 		public IBackend Backend { get; private set; }
 
+		/// <summary>
+		/// Gets or sets the current backend.
+		/// </summary>
+		/// <value>The current backend.</value>
 		public BackendInfo CurrentBackend {
 			get { return currentBackendInfo; }
 			set {

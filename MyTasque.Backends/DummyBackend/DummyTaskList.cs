@@ -136,6 +136,23 @@ namespace MyTasque.Backends
 			this.Add (t);
 			return t;
 		}
+
+		/// <summary>
+		/// Orders by OrderByType.
+		/// </summary>
+		/// <param name="type">Type.</param>
+		public void OrderTasksBy(OrderByType type)
+		{
+			switch (type) {
+			case OrderByType.Name:
+				Tasks.Sort ((x,y) => string.Compare (x.Name, y.Name));
+				break;
+
+			case OrderByType.DueDate:
+				Tasks.Sort ((x,y) => DateTime.Compare (x.DueDate, y.DueDate));
+				break;
+			}
+		}
 		
 
 
