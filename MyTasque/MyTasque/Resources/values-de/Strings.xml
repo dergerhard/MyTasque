@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!-- MainActivity Buttons-->
-	<string name="app_name">Android.MyTasque</string>
+	<string name="app_name">MyTasque</string>
 	<string name="edNewTaskHint">Neue Aufgabe...</string>
 	<string name="btAdd">Hinzufügen</string>
 	<string name="dueOn">Fällig am: </string>

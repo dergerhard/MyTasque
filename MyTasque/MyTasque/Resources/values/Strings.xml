@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!-- MainActivity Buttons-->
-	<string name="app_name">Android.MyTasque</string>
-	<string name="edNewTaskHint">new task...</string>
+	<string name="app_name">MyTasque</string>
+	<string name="edNewTaskHint">New task...</string>
 	<string name="btAdd">Add</string>
 	<string name="dueOn">Due on: </string>
 	<string name="save">Save</string>
@@ -20,7 +20,7 @@
 	<!-- TaskEditActivity -->
 	<string name="notes">Notes:</string>
 	<string name="completed">Completed</string>
-	<string name="edNewNoteHint">new note...</string>
+	<string name="edNewNoteHint">New note...</string>
 	<string name="taskText">Task</string>
 	<string name="taskCompleted">Completed</string>
 	<string name="taskDueOn">Due on</string>
