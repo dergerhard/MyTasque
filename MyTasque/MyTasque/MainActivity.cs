@@ -40,7 +40,7 @@ namespace MyTasque
 		/// <summary>
 		/// The backend. For easier acces (avoiding TaskRepository.Instance.Manager.Backend)
 		/// </summary>
-		private IBackend backend;
+		//DEL private IBackend backend;
 
 		/// <summary>
 		/// Raises the create event.
@@ -57,12 +57,12 @@ namespace MyTasque
 			Translator.Instance.ConcreteTranslator = new AndroidTranslator (this);
 
 			//Initialize Backend/TaskRepository
-			BackendManager ma = TaskRepository.Instance.Manager;
+			//DEL BackendManager ma = TaskRepository.Instance.Manager;
 			TaskRepository.Instance.Activity = this;
 
 			//Load the correct backend
 			TaskRepository.Instance.SetActiveBackendFromPreferencesAndInitializeAndSync ();
-			backend = TaskRepository.Instance.Manager.Backend;
+			//DEL backend = TaskRepository.Instance.Manager.Backend;
 
 			// find viewpager
 			mViewPager = (ViewPager) this.FindViewById<ViewPager>(Resource.Id.pager);
@@ -87,7 +87,7 @@ namespace MyTasque
 		protected override void OnPause ()
 		{
 			base.OnPause ();
-			backend.Sync ();
+			TaskRepository.Instance.Sync ();
 		}
 
 		/// <summary>
@@ -96,7 +96,7 @@ namespace MyTasque
 		public void RealoadTaskListView()
 		{
 			//ensure all is configured correctly and synced
-			backend = TaskRepository.Instance.Manager.Backend;
+			//DEL backend = TaskRepository.Instance.Manager.Backend;
 
 			if (mTaskListPageAdapter!=null)
 				mTaskListPageAdapter.Dispose ();
@@ -165,7 +165,7 @@ namespace MyTasque
 				break;
 
 			case Resource.Id.menuChangeTaskListName:
-				this.TaskListCreateChange (GetString (Resource.String.adEnterTaskListName), backend.AllTaskLists[mViewPager.CurrentItem].Name);
+				this.TaskListCreateChange (GetString (Resource.String.adEnterTaskListName), TaskRepository.Instance.AllTaskLists[mViewPager.CurrentItem].Name);
 				break;
 
 			case Resource.Id.menuDeleteTaskList:
@@ -177,9 +177,9 @@ namespace MyTasque
 
 					dialog.SetPositiveButton(GetString(Resource.String.btOk), (sender, args) =>
 					                         {
-						backend.DeleteTaskList(backend.AllTaskLists[mViewPager.CurrentItem]);
+						TaskRepository.Instance.DeleteTaskList(TaskRepository.Instance.AllTaskLists[mViewPager.CurrentItem]);
 						this.RealoadTaskListView();
-						this.backend.Sync();
+						TaskRepository.Instance.Sync ();
 					});
 
 					dialog.SetNegativeButton(GetString(Resource.String.btCancel), (sender, args) =>
@@ -224,7 +224,7 @@ namespace MyTasque
 					{
 						try 
 						{
-							backend.CreateTaskList(input.Text);
+							TaskRepository.Instance.CreateTaskList(input.Text);
 						}
 						catch (Exception e)
 						{
@@ -233,12 +233,12 @@ namespace MyTasque
 					}
 					else 
 					{
-						backend.AllTaskLists.Single(x => x.Name.Equals(previousName)).Name=input.Text;
+						TaskRepository.Instance.AllTaskLists.Single(x => x.Name.Equals(previousName)).Name=input.Text;
 					}
 
 					try {
 						this.RealoadTaskListView();
-						backend.Sync();
+						TaskRepository.Instance.Sync();
 					} catch (Exception ex) {
 						Toast.MakeText(this, ex.Message.ToString(), ToastLength.Long).Show();
 					}

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- MainActivity Buttons-->
+	<string name="app_name">MyTasque</string>
+	<string name="edNewTaskHint">Nueva tarea...</string>
+	<string name="btAdd">Añadir</string>
+	<string name="dueOn">Debido en: </string>
+	<string name="save">Guardar</string>
+
+	<string name="btOk">Aceptar</string>
+	<string name="btCancel">Cancelar</string>
+	<string name="adEnterTaskListName">Nombre de la lista de tareas</string>
+	
+	<string name="deleteTaskListTitle">Borrar la lista de tareas</string>
+	<string name="deleteTaskListMessage">Si Vd. borra esta lista de tareas, se va a borrar todas las tareas y todas las notas tambien. Vd. quiere continuar?</string>
+			
+	<string name="deleteTaskTitle">Borrar tarea</string>
+	<string name="deleteTaskMessage">Vd. quiere borrar la tarea y todas sus notas?</string>
+	
+	<!-- TaskEditActivity -->
+	<string name="notes">Notas:</string>
+	<string name="completed">Terminado</string>
+	<string name="edNewNoteHint">Nueva nota...</string>
+	<string name="taskText">Tarea</string>
+	<string name="taskCompleted">Terminado</string>
+	<string name="taskDueOn">Debido en</string>
+	<string name="taskNameCannotBeEmpty">El nombre de la tarea no puede ser vacio</string>
+	<string name="dueDate">Debido en:</string>
+	<string name="dueTime">Hora:</string>
+	<string name="createNoteTitle">Crear nota:</string>
+	<string name="editNoteTitle">Editar nota:</string>
+	
+	<!-- About Activity -->
+	<string name="AboutActivity">Sobre MyTasque</string>
+	<string name="Author">Gerhard Liebmann</string>
+	<string name="Institution">FH Wiener Neustadt</string>
+	<string name="Date">18.08.2013</string>
+	
+	<!-- TaskListFragment -->
+	<string name="createNewTaskTitle">Nueva tarea:</string>
+	
+	<!-- TaskListAdapter-->
+	<string name="note">nota</string>
+	<string name="notes">notas</string>
+	
+	<!-- ActionBar Menu -->
+	<string name="settings">Ajustes</string>
+	<string name="changeTaskListName">Cambiar nombre</string>
+	<string name="menuAddTaskList">Añadir lista de tareas</string>
+	<string name="menuDeleteTaskList">Borrar lista de tareas</string>
+	<string name="menuChangeTaskListName">Editar lista de tareas</string>
+	<string name="about">Sobre</string>
+	
+	<!-- Settings Screen -->
+	<string name="username">Usuario</string>
+	<string name="usernameSummary">Usuario del Backend</string>
+	<string name="usernameDialogTitle">Ponga su nombre de usuario:</string>
+	
+	<string name="password">Contraseña</string>
+	<string name="passwordSummary">contraseña del Backend</string>
+	<string name="passwordDialogTitle">Ponga su contraseña:</string>
+		
+	<string name="backendCategoryTitle">Configuracion del Backend</string>
+	<string name="infoCategoryTitle">Informacion</string>
+	<string name="tasqueInternetTitle">Tasque en el internet</string>
+	<string name="tasqueInternetSummary">Visita Tasque en el internet</string>
+	
+	<string-array name="backendKeys">
+        <item name="1">Backend Local</item>
+        <item name="2">Backend RememberTheMilk</item>
+        <item name="3">Backend Google</item>
+        <item name="4">Backend Dummy</item>
+    </string-array>
+    
+    <string-array name="backendValues">
+        <item name="1">local</item>
+        <item name="2">rtm</item>
+        <item name="3">google</item>
+        <item name="4">dummy</item>
+    </string-array>
+    
+    <string name="backendDefault">local</string>
+    <string name="backendDialogTitle">Almacenamiento:</string>
+    <string name="backendTitle">Elija el Backend</string>
+
+	<string name="displayCategoryTitle">Opciones de presentacion</string>
+	
+	<string name="orderByDefault">name</string>
+    <string name="orderByDialogTitle">Ordenar tareas...</string>
+    <string name="orderByTitle">Elija orden de tareas</string>
+
+	<string-array name="orderByKeys">
+        <item name="1">name</item>
+        <item name="2">due date</item>
+    </string-array>
+    
+    <string-array name="orderByValues">
+        <item name="1">Nombre</item>
+        <item name="2">Fecha</item>
+    </string-array>
+
+    
+    <string name="showCompleted">Muestra tareas terminadas</string>
+    <string name="showCompletedSummary">Muestra tareas terminadas</string>
+    
+    <string name="showActive">Muestra tareas activas</string>
+    <string name="showActiveSummary">Muestra tareas activas</string>
+    
+    <string name="TasquePreferenceActivity">Preferencias</string>
+    <string name="TaskEditActivity">Editar tarea</string>
+    
+    <!-- Backend strings for AndroidTranslator-->
+    <string name="DummyBackend.BackendNotInitialized">El backend no esta initializado. Operacion cancelada.</string>
+    <string name="DummyBackend.DeleteTaskList.ListNotExists">No se puede borrar esta lista de tareas.</string>
+    <string name="LocalBackend.BackendNotInitialized">El backend no esta initializado. Operacion cancelada.</string>
+	<string name="LocalBackend.CreateTaskList.ListAlreadyExists">Una lista de tareas ya existe.</string>
+	<string name="LocalBackend.DeleteTaskList.ListNotExists">No se puede borrar esta lista de tareas.</string>
+
+
+</resources>

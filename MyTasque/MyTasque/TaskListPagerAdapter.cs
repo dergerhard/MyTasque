@@ -46,7 +46,7 @@ namespace MyTasque
 				tlf.Dispose ();
 
 			this.TaskListFragments.Clear ();
-			foreach (ITaskList tl in TaskRepository.Instance.Manager.Backend.AllTaskLists) 
+			foreach (ITaskList tl in TaskRepository.Instance.AllTaskLists) 
 			{
 				TaskListFragments.Add(new TaskListFragment(tl));
 			}

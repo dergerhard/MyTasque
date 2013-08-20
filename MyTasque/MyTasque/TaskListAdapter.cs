@@ -89,6 +89,10 @@ namespace MyTasque
 
 		}
 
+		/// <summary>
+		/// Adds to filtered list.
+		/// </summary>
+		/// <param name="t">T.</param>
 		public void AddToFilteredList(ITask t)
 		{
 			if (t.Completed == false)

@@ -57,7 +57,6 @@
     <Compile Include="TaskListPagerAdapter.cs" />
     <Compile Include="TaskRepository.cs" />
     <Compile Include="TasquePreferenceActivity.cs" />
-    <Compile Include="TasquePreferenceFragment.cs" />
     <Compile Include="DatePickerDialogFragment.cs" />
     <Compile Include="TimePickerDialogFragment.cs" />
     <Compile Include="AboutActivity.cs" />
@@ -70,7 +69,9 @@
     <None Include="README.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml">
+      <Link>Resources\values-en\Strings.xml</Link>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\Add.png" />
     <AndroidResource Include="Resources\drawable\Delete.png" />
     <AndroidResource Include="Resources\drawable\Edit.png" />
@@ -89,6 +90,7 @@
     <AndroidResource Include="Resources\values-de\Strings.xml" />
     <AndroidResource Include="Resources\drawable\Info.png" />
     <AndroidResource Include="Resources\drawable\Settings.png" />
+    <AndroidResource Include="Resources\values-es\Strings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

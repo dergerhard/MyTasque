@@ -30,7 +30,7 @@ namespace MyTasque
 		/// Gets or sets the manager.
 		/// </summary>
 		/// <value>The manager.</value>
-		public BackendManager Manager { get; private set; }
+		private BackendManager Manager { get; set; }
 
 		/// <summary>
 		/// Gets or sets the task buffer. Used for communication between Aktivities.
@@ -116,6 +116,7 @@ namespace MyTasque
 			if (!foundBackend)
 				throw new InvalidOperationException ("The configured backend was not found");
 			BackendContext ctx = new BackendContext ();
+			//get username & password... future implementations
 
 			Manager.Backend.Initialize (ctx);
 			Manager.Backend.Sync ();
@@ -135,6 +136,44 @@ namespace MyTasque
 				foreach (var tl in Manager.Backend.AllTaskLists)
 					tl.OrderTasksBy (OrderByType.DueDate);
 		}
+
+		/// <summary>
+		/// Sync the data backend.
+		/// </summary>
+		public void Sync()
+		{
+			this.Manager.Backend.Sync ();
+		}
+
+		/// <summary>
+		/// Gets all task lists.
+		/// </summary>
+		/// <value>All task lists.</value>
+		public IList<ITaskList> AllTaskLists {
+			get {
+				return this.Manager.Backend.AllTaskLists;
+			}
+		}
+
+		/// <summary>
+		/// Creates the task list.
+		/// </summary>
+		/// <returns>The task list.</returns>
+		/// <param name="name">Name.</param>
+		public ITaskList CreateTaskList(string name)
+		{
+			return this.Manager.Backend.CreateTaskList (name);
+		}
+
+		/// <summary>
+		/// Deletes the task list.
+		/// </summary>
+		/// <param name="tl">Tl.</param>
+		public void DeleteTaskList(ITaskList tl)
+		{
+			this.Manager.Backend.DeleteTaskList (tl);
+		}
+
 		
 		/// <summary>
 		/// Gets the instance.

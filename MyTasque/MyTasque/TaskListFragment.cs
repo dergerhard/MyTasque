@@ -73,8 +73,6 @@ namespace MyTasque
 		/// <param name="e">E.</param>
 		public void BtAddTaskClicked(object sender, EventArgs e)
 		{
-			IBackend backend = TaskRepository.Instance.Manager.Backend;
-
 			AlertDialog.Builder dialog = new AlertDialog.Builder (this.Activity);
 			dialog.SetTitle (this.GetString(Resource.String.createNewTaskTitle));
 			string errorString = "";
@@ -90,7 +88,7 @@ namespace MyTasque
 					{
 						ITask t = CurrentTaskList.CreateTask(input.Text, DateTime.Now, false);
 						((TaskListAdapter)lvTasks.Adapter).AddToFilteredList(t);
-						backend.Sync();
+						TaskRepository.Instance.Sync();
 					}
 					catch (Exception ex)
 					{

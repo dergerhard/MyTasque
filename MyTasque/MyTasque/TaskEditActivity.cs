@@ -190,7 +190,7 @@ namespace MyTasque
 				CurrentTask.Completed = this.FindViewById<CheckBox> (Resource.Id.cbTaskCompleted).Checked;
 				//todo: notes
 				TaskRepository.Instance.TaskBuffer = CurrentTask;
-				TaskRepository.Instance.Manager.Backend.Sync ();
+				TaskRepository.Instance.Sync ();
 				TaskRepository.Instance.TaskListAdapterBuffer.NotifyDataSetChanged ();
 			}
 		}

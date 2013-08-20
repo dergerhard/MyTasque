@@ -1,50 +1,31 @@
 ﻿<Properties>
   <AuthorInfo Name="Gerhard Liebmann" Email="dergerhard@gmail.com" Copyright="Gerhard Liebmann" Company="" Trademark="" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MyTasque\Resources\values\Strings.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\MyTasque.Backends\LocalBackend\LocalNote.cs">
     <Files>
-      <File FileName="..\MyTasque.Lib\ITaskList.cs" Line="28" Column="7" />
-      <File FileName="..\MyTasque.Backends\DummyBackend\DummyTaskList.cs" Line="1" Column="1" />
-      <File FileName="MyTasque\TaskRepository.cs" Line="86" Column="3" />
-      <File FileName="..\MyTasque.Lib\Backend\IBackend.cs" Line="24" Column="19" />
-      <File FileName="MyTasque\Resources\xml\preferences.xml" Line="1" Column="1" />
-      <File FileName="MyTasque\Resources\values\Strings.xml" Line="8" Column="35" />
-      <File FileName="..\MyTasque.Lib\Backend\BackendManager.cs" Line="76" Column="3" />
-      <File FileName="..\MyTasque.Lib\Backend\BackendContext.cs" Line="24" Column="16" />
-      <File FileName="..\MyTasque.Lib\Backend\BackendInfo.cs" Line="34" Column="7" />
-      <File FileName="..\MyTasque.Backends\DummyBackend\DummyBackend.cs" Line="150" Column="43" />
-      <File FileName="MyTasque\NoteAdapter.cs" Line="99" Column="30" />
-      <File FileName="..\MyTasque.Lib\ITask.cs" Line="20" Column="17" />
-      <File FileName="MyTasque\TaskEditActivity.cs" Line="87" Column="14" />
-      <File FileName="MyTasque\TaskListAdapter.cs" Line="81" Column="4" />
-      <File FileName="MyTasque\TaskListFragment.cs" Line="113" Column="1" />
-      <File FileName="MyTasque\TaskListPagerAdapter.cs" Line="83" Column="4" />
-      <File FileName="MyTasque\MainActivity.cs" Line="44" Column="3" />
-      <File FileName="MyTasque\TasquePreferenceActivity.cs" Line="35" Column="4" />
-      <File FileName="..\MyTasque.Lib\INote.cs" Line="25" Column="7" />
-      <File FileName="..\MyTasque.Backends\DummyBackend\DummyTask.cs" Line="1" Column="1" />
-      <File FileName="..\MyTasque.Backends\DummyBackend\DummyNote.cs" Line="1" Column="1" />
-      <File FileName="..\MyTasque.Lib\MyTasqueObject.cs" Line="1" Column="14" />
-      <File FileName="..\MyTasque.Backends\LocalBackend\LocalBackend.cs" Line="1" Column="1" />
-      <File FileName="..\MyTasque.Backends\LocalBackend\LocalTask.cs" Line="1" Column="1" />
+      <File FileName="MyTasque\TaskEditActivity.cs" Line="72" Column="46" />
+      <File FileName="MyTasque\TaskListFragment.cs" Line="60" Column="19" />
+      <File FileName="MyTasque\TaskListAdapter.cs" Line="97" Column="4" />
+      <File FileName="..\MyTasque.Lib\Backend\IBackend.cs" Line="26" Column="3" />
       <File FileName="..\MyTasque.Backends\LocalBackend\LocalNote.cs" Line="1" Column="1" />
-      <File FileName="..\MyTasque.Backends\LocalBackend\LocalTaskList.cs" Line="1" Column="1" />
-      <File FileName="MyTasque\README.txt" Line="1" Column="1" />
-      <File FileName="MyTasque\Resources\menu\ActionBar.axml" Line="1" Column="1" />
-      <File FileName="MyTasque\TasquePreferenceFragment.cs" Line="21" Column="16" />
-      <File FileName="MyTasque\DatePickerDialogFragment.cs" Line="50" Column="38" />
-      <File FileName="MyTasque\AboutActivity.cs" Line="17" Column="43" />
-      <File FileName="MyTasque\TimePickerDialogFragment.cs" Line="45" Column="15" />
-      <File FileName="..\MyTasque.Lib\ChangeType.cs" Line="6" Column="18" />
-      <File FileName="MyTasque\Resources\values-de\Strings.xml" Line="4" Column="44" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
+          <Node name="MyTasque" expanded="True">
+            <Node name="Properties" expanded="True" />
+            <Node name="Resources" expanded="True">
+              <Node name="layout" expanded="True" />
+              <Node name="values" expanded="True" />
+              <Node name="values-de" expanded="True" />
+              <Node name="xml" expanded="True" />
+            </Node>
+          </Node>
           <Node name="MyTasque.Backends" expanded="True">
             <Node name="DummyBackend" expanded="True" />
+            <Node name="LocalBackend" expanded="True" selected="True" />
           </Node>
-          <Node name="MyTasque.Lib" expanded="True" selected="True">
+          <Node name="MyTasque.Lib" expanded="True">
             <Node name="Backend" expanded="True" />
           </Node>
         </State>
@@ -55,5 +36,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.MyTasque AndroidDeviceId-Debug="0019f9a034015e" MonoForAntroid.PreferredDevice="3.7in WVGA (Nexus One)" />
+  <MonoDevelop.Ide.ItemProperties.MyTasque MonoForAntroid.PreferredDevice="3.7in WVGA (Nexus One)" />
 </Properties>
