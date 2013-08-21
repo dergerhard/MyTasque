@@ -17,6 +17,8 @@
 	<string name="deleteTaskTitle">Borrar tarea</string>
 	<string name="deleteTaskMessage">Vd. quiere borrar la tarea y todas sus notas?</string>
 	
+	<string name="nothingSelected">Ninguna lista de tareas disponible</string>
+	
 	<!-- TaskEditActivity -->
 	<string name="notes">Notas:</string>
 	<string name="completed">Terminado</string>

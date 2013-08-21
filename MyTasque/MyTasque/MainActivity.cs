@@ -21,7 +21,6 @@ using MyTasque.Lib.Backend;
 using MyTasque.Lib;
 using Android.Content.PM;
 
-
 namespace MyTasque
 {
 	[Activity (Label = "@string/app_name", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
@@ -37,10 +36,6 @@ namespace MyTasque
 		/// </summary>
 		private TaskListPagerAdapter mTaskListPageAdapter;
 
-		/// <summary>
-		/// The backend. For easier acces (avoiding TaskRepository.Instance.Manager.Backend)
-		/// </summary>
-		//DEL private IBackend backend;
 
 		/// <summary>
 		/// Raises the create event.
@@ -57,12 +52,10 @@ namespace MyTasque
 			Translator.Instance.ConcreteTranslator = new AndroidTranslator (this);
 
 			//Initialize Backend/TaskRepository
-			//DEL BackendManager ma = TaskRepository.Instance.Manager;
 			TaskRepository.Instance.Activity = this;
 
 			//Load the correct backend
 			TaskRepository.Instance.SetActiveBackendFromPreferencesAndInitializeAndSync ();
-			//DEL backend = TaskRepository.Instance.Manager.Backend;
 
 			// find viewpager
 			mViewPager = (ViewPager) this.FindViewById<ViewPager>(Resource.Id.pager);
@@ -95,9 +88,6 @@ namespace MyTasque
 		/// </summary>
 		public void RealoadTaskListView()
 		{
-			//ensure all is configured correctly and synced
-			//DEL backend = TaskRepository.Instance.Manager.Backend;
-
 			if (mTaskListPageAdapter!=null)
 				mTaskListPageAdapter.Dispose ();
 
@@ -164,30 +154,38 @@ namespace MyTasque
 				this.TaskListCreateChange(GetString (Resource.String.adEnterTaskListName)); 
 				break;
 
-			case Resource.Id.menuChangeTaskListName:
-				this.TaskListCreateChange (GetString (Resource.String.adEnterTaskListName), TaskRepository.Instance.AllTaskLists[mViewPager.CurrentItem].Name);
-				break;
+		case Resource.Id.menuChangeTaskListName:
+			if (mViewPager.ChildCount > 0)
+				this.TaskListCreateChange (GetString (Resource.String.adEnterTaskListName), TaskRepository.Instance.AllTaskLists [mViewPager.CurrentItem].Name);
+			else
+				Toast.MakeText (this, this.GetString (Resource.String.nothingSelected), ToastLength.Long);
+			break;
 
 			case Resource.Id.menuDeleteTaskList:
 				try
 				{
-					AlertDialog.Builder dialog = new AlertDialog.Builder (this);
-					dialog.SetTitle (this.GetString(Resource.String.deleteTaskListTitle));
-					dialog.SetMessage(this.GetString(Resource.String.deleteTaskListMessage));
+					//check if there is at least one TaskList
+					if (mViewPager.ChildCount>0)
+					{
+						AlertDialog.Builder dialog = new AlertDialog.Builder (this);
+						dialog.SetTitle (this.GetString(Resource.String.deleteTaskListTitle));
+						dialog.SetMessage(this.GetString(Resource.String.deleteTaskListMessage));
 
-					dialog.SetPositiveButton(GetString(Resource.String.btOk), (sender, args) =>
-					                         {
-						TaskRepository.Instance.DeleteTaskList(TaskRepository.Instance.AllTaskLists[mViewPager.CurrentItem]);
-						this.RealoadTaskListView();
-						TaskRepository.Instance.Sync ();
-					});
+						dialog.SetPositiveButton(GetString(Resource.String.btOk), (sender, args) =>
+						                         {
+							TaskRepository.Instance.DeleteTaskList(TaskRepository.Instance.AllTaskLists[mViewPager.CurrentItem]);
+							this.RealoadTaskListView();
+							TaskRepository.Instance.Sync ();
+						});
 
-					dialog.SetNegativeButton(GetString(Resource.String.btCancel), (sender, args) =>
-					                         {
-						dialog.Dispose();
-					});
-					dialog.Show();
-
+						dialog.SetNegativeButton(GetString(Resource.String.btCancel), (sender, args) =>
+						                         {
+							dialog.Dispose();
+						});
+						dialog.Show();
+					}
+					else
+						Toast.MakeText (this, this.GetString (Resource.String.nothingSelected), ToastLength.Long);
 				}
 				catch (Exception e) {
 					Toast.MakeText (this, e.Message.ToString (), ToastLength.Long).Show ();
@@ -284,6 +282,7 @@ namespace MyTasque
 		/// <param name="fragmentTransaction">Fragment transaction.</param>
 		public void OnTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) 
 		{
+			//nothing to do here
 		}
 
 	}

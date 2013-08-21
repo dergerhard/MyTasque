@@ -97,6 +97,7 @@ namespace MyTasque
 		{
 			if (t.Completed == false)
 				filteredTasks.Add (t);
+			this.NotifyDataSetChanged ();
 		}
 
 		/// <summary>

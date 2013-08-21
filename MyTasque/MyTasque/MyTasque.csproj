@@ -69,9 +69,6 @@
     <None Include="README.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml">
-      <Link>Resources\values-en\Strings.xml</Link>
-    </AndroidResource>
     <AndroidResource Include="Resources\drawable\Add.png" />
     <AndroidResource Include="Resources\drawable\Delete.png" />
     <AndroidResource Include="Resources\drawable\Edit.png" />
@@ -91,6 +88,8 @@
     <AndroidResource Include="Resources\drawable\Info.png" />
     <AndroidResource Include="Resources\drawable\Settings.png" />
     <AndroidResource Include="Resources\values-es\Strings.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values-en\Strings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -101,6 +100,7 @@
     <Folder Include="Resources\values-de\" />
     <Folder Include="Resources\values-en\" />
     <Folder Include="Resources\values-es\" />
+    <Folder Include="Resources\values\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MyTasque.Lib\MyTasque.Lib.csproj">

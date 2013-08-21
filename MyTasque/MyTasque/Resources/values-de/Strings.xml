@@ -17,6 +17,8 @@
 	<string name="deleteTaskTitle">Aufgabe löschen</string>
 	<string name="deleteTaskMessage">Wollen sie diese Aufgabe und alle dazugehörigen Notizen wirklich löschen?</string>
 	
+	<string name="nothingSelected">Keine Taskliste vorhanden</string>
+	
 	<!-- TaskEditActivity -->
 	<string name="notes">Notizen:</string>
 	<string name="completed">Erledigt</string>

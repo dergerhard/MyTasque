@@ -17,6 +17,8 @@
 	<string name="deleteTaskTitle">Delete task</string>
 	<string name="deleteTaskMessage">Do you really want to delete this task list and all its notes?</string>
 	
+	<string name="nothingSelected">No task list available</string>
+	
 	<!-- TaskEditActivity -->
 	<string name="notes">Notes:</string>
 	<string name="completed">Completed</string>

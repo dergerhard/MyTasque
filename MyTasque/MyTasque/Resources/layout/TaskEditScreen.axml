@@ -116,6 +116,6 @@
             android:layout_height="fill_parent"
             android:id="@+id/btAddNewNote"
             android:background="@null"
-            android:layout_margin="3dp" />
+            android:layout_marginBottom="10dp" />
     </LinearLayout>
 </LinearLayout>
