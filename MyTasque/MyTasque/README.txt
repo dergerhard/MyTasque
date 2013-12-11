@@ -7,13 +7,8 @@ Look:
 Attention: Um ein XML file beim Resource-Designer zu berücksichtigen: Rechtsklick -> Eirzeugungsaktionen -> AndroidResource
 
 
-
-
 Always online app
-
-
 http://developer.android.com/training/basics/firstapp/starting-activity.html
-
 
 Swipe-Views with tabs
 http://developer.android.com/training/implementing-navigation/lateral.html#swipe-tabs
@@ -46,34 +41,10 @@ Hassles/Problems
 XamarinStudio stürzte je nach Version zwischen 5(beta) und 20(alpha)! mal am Tag ab. (Es musste Beta verwendet werden, da es in der Release ein Problem gab, auf verschiedenen PCs gabe - inkl meinem - das sich nich lösen ließ.)
  
 
-RTM: Erzeugungsaktion ist auf NONE
-
-
-TODO
-----------------------------
- - About Activity
-
-  - Show Tasks according Preferences
- 
- - write Google Backend
- 
- - lib translator
- - translations
- 
- - doc
-
-
-
-Abstract class / interface
---------------------------------
+Abstract class / interface - which one to choose?
+--------------------------------------------------
 1. Are there many classes that can be "grouped together" and described by one noun? If so, have an abstract class by the name of this noun, and inherit the classes from it. (A key decider is that these classes share functionality, and you would never instantiate just an Animal... you would always instantiate a certain kind of Animal: an implementation of your Animal base class)
 Example: Cat and Dog can both inherit from abstract class Animal, and this abstract base class will implement a method void Breathe() which all animals will thus do in exactly the same fashion. (I might make this method virtual so that I can override it for certain animals, like Fish, which does not breath the same as most animals).
 
 2. What kinds of verbs can be applied to my class, that might in general also be applied to others? Create an interface for each of these verbs.
 Example: All animals can be fed, so I will create an interface called IFeedable and have Animal implement that. Only Dog and Horse are nice enough though to implement ILikeable - I will not implement this on the base class, since this does not apply to Cat.
-
-
-Gmail Api Account:
-mytasque@gmail.com:FHWN2013!
-API-Key: AIzaSyBk9ZHgPHyGJsYtUDO4wRfhh4KvK9ocWNI
-
