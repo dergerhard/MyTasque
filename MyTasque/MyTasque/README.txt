@@ -48,3 +48,5 @@ Example: Cat and Dog can both inherit from abstract class Animal, and this abstr
 
 2. What kinds of verbs can be applied to my class, that might in general also be applied to others? Create an interface for each of these verbs.
 Example: All animals can be fed, so I will create an interface called IFeedable and have Animal implement that. Only Dog and Horse are nice enough though to implement ILikeable - I will not implement this on the base class, since this does not apply to Cat.
+ 
+Todo
